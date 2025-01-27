@@ -1,0 +1,34 @@
+<div class="container mt-3">
+  <div class="card bg-secondary text-white">
+    <div class="card-header py-2">
+      <h3 class="h5">User Details</h3>
+    </div>
+    <div class="card-body p-2">
+      <p class="mb-1"><strong>ID:</strong> <%= @user.id %></p>
+      <p class="mb-1"><strong>Email:</strong> <%= @user.email %></p>
+      <p class="mb-1"><strong>Role:</strong> <%= @user.admin? ? 'Admin' : 'User' %></p>
+
+      <!-- Buttons to change role -->
+      <p class="mb-2">
+        <% if @user.admin? %>
+          <%= button_to 'Remove Admin', remove_admin_user_path(@user), method: :patch, class: 'btn btn-sm btn-warning', data: { confirm: "Are you sure you want to remove admin rights from this user?" } %>
+        <% else %>
+          <%= button_to 'Set Admin', set_admin_user_path(@user), method: :patch, class: 'btn btn-sm btn-primary', data: { confirm: "Are you sure you want to give admin rights to this user?" } %>
+        <% end %>
+      </p>
+
+      <div class="mt-2">
+        <% if current_user == @user || current_user.admin? %>
+          <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-sm btn-light' %> |
+
+          <%# Admins can delete any user's account, and a user can delete their own account %>
+          <%= link_to 'Back', user_path(@user), class: 'btn btn-sm btn-dark', method: :delete, data: { confirm: 'Are you sure you want to delete this account?' } %>
+
+          <%# Admins or the user themselves can cancel their account, but using the correct path for that user %>
+          <%= button_to "Cancel this account", user_path(@user), class: 'btn btn-sm btn-danger mt-2', data: { confirm: "Are you sure you want to cancel this account?" }, method: :delete %>
+        <% end %>
+        </div>
+    </div>
+  
+  </div>
+</div>

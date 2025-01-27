@@ -1,0 +1,32 @@
+<body style="background: linear-gradient(45deg, #87CEEB, #000000); background-size: cover; background-attachment: fixed; color: white;">
+<div class="home-background">
+  <% if user_signed_in? %>
+    <div class="text-center" style="margin-top: 10rem;">
+      <h1 style="color: white; font-size: 1.5rem;">TEAM WORK IS KEY</h1>
+      <p style="color: white; font-size: 0.9rem;">Welcome back, <%= current_user.email %>! Let's keep changing the world together.</p>
+    </div>
+  <% else %>
+    <div class="text-center" style="margin-top: 10rem;">
+      <h1 style="color: white; font-size: 1.5rem;">TEAM WORK IS KEY</h1>
+      <p style="color: white; font-size: 0.9rem;">Join me, change the world</p>
+
+      <div class="d-flex justify-content-center mt-4" style="font-size: 0.9rem;">
+        <%= link_to 'Sign Up', new_user_registration_path, class: "px-3 me-3 btn btn-dark", style: "color: white; transition: background-color 0.3s ease;" %>
+        <%= link_to 'Log In', new_user_session_path, class: "px-3 btn btn-secondary", style: "color: white; transition: background-color 0.3s ease;" %>
+      </div>
+    </div>
+  <% end %>
+
+  <style>
+    /* Hover effects for buttons */
+    .btn-dark:hover {
+      background-color: rgb(105, 115, 125); /* Slightly lighter dark for hover */
+    }
+
+    .btn-secondary:hover {
+      background-color: rgb(27, 29, 30); /* Slightly darker secondary for hover */
+    }
+
+
+  </style>
+</body>

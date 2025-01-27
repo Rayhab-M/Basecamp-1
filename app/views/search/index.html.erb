@@ -1,0 +1,33 @@
+<br><br>
+<div class="search-results-container p-4" style="background: linear-gradient(to right,rgb(113, 112, 122),rgb(48, 71, 112)); background-size: cover; background-repeat: no-repeat; color: white;">
+ <h4>Search Results for "<%= params[:search] %>"</h4>
+
+  <!-- Display Users if there are results and user is an admin -->
+  <% if current_user.admin? && @users.any? %>
+    <h5>Users</h5>
+    <ul style="list-style-type: none; padding-left: 0;">
+      <% @users.each do |user| %>
+        <li style="margin-bottom: 0.5rem; font-size: 1.1rem; padding: 0.5rem; background-color: rgba(59, 58, 58, 0.2); border-radius: 5px;">
+          <%= link_to user.email, user_path(user), style: "color: white;" %> <!-- Link to user profile page -->
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <!-- Display Projects if there are results -->
+  <% if @projects.any? %>
+    <h5>Projects</h5>
+    <ul style="list-style-type: none; padding-left: 0;">
+      <% @projects.each do |project| %>
+        <li style="margin-bottom: 1rem; font-size: 1.1rem; padding: 0.5rem; background-color: rgba(17, 17, 17, 0.2); border-radius: 5px;">
+          <%= link_to project.name, project_path(project), style: "color: white; font-weight: bold;" %> - <%= project.description %> <!-- Link to project show page -->
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <!-- Display message if no results were found -->
+  <% if @users.empty? && @projects.empty? %>
+    <p class="text-center">No results found for "<%= params[:search] %>".</p>
+  <% end %>
+</div>

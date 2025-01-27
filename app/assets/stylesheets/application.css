@@ -1,0 +1,23 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+
+ /* body {
+  background-image: url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;          /* Ensures the image covers the whole page */
+  /* background-position: center;     /* Centers the image */
+/*  background-repeat: no-repeat;    /* Prevents the image from repeating */
+ /* height: 100vh;                   /* Make sure the body height is 100% of the viewport */
+  /*margin: 0;                       /* Removes default margin */
+  /*padding: 0;                      /* Removes default padding */
+  /*overflow: hidden;                Prevents scrolling */
+
+/* } */ 

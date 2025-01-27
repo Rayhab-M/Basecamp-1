@@ -1,0 +1,40 @@
+
+<div class="container mt-5">
+  <h1 class="text-center mb-4" style="font-size: 1.5rem; padding: 10px;">All Users</h1>
+
+  <table class="table table-dark table-striped table-hover table-bordered table-sm" style="padding: 15px;">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col" style="font-size: 0.875rem; padding: 12px;">Email</th>
+        <th scope="col" style="font-size: 0.875rem; padding: 12px;">Admin</th>
+        <th scope="col" style="font-size: 0.875rem; padding: 12px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td style="font-size: 0.875rem; padding: 12px;"><%= user.email %></td>
+          <td style="font-size: 0.875rem; padding: 12px;">
+            <%= user.admin? ? "Yes" : "No" %>
+          </td>
+          <td style="padding: 12px;">
+            <div class="d-inline-flex">
+              <!-- Set or Remove Admin -->
+              <% if user.admin? %>
+                <%= button_to 'Remove Admin', remove_admin_user_path(user), method: :patch, class: 'btn btn-warning btn-sm me-2', data: { confirm: "Are you sure you want to remove admin rights from this user?" } %>
+              <% else %>
+                <%= button_to 'Set Admin', set_admin_user_path(user), method: :patch, class: 'btn btn-success btn-sm me-2', data: { confirm: "Are you sure you want to give admin rights to this user?" } %>
+              <% end %>
+
+              <!-- Delete User -->
+              <%= button_to 'Delete', user_path(user), method: :delete, class: 'btn btn-danger btn-sm me-2', data: { confirm: "Are you sure you want to delete this user?" } %>
+
+              <!-- View User Details -->
+              <%= link_to 'View', user_path(user), class: 'btn btn-info btn-sm' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
